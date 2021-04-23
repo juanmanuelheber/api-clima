@@ -7,3 +7,12 @@
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
+
+.btn-unit {
+  background-color: transparent;
+  border: none;
+  color: gray;
+}
+.activo {
+  color: white;
+}

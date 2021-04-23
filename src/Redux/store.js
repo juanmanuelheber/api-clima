@@ -1,6 +1,6 @@
 import {applyMiddleware, createStore} from "redux"
 import thunk from "redux-thunk"
-import { CARGAR_DATA,CARGANDO_DATA, MOSTRAR_ERROR } from "./actions"
+import { CARGAR_DATA,CARGANDO_DATA, MOSTRAR_ERROR, CAMBIAR_UNIDADES } from "./actions"
 import {composeWithDevTools} from "redux-devtools-extension"
 
 const initialStore={
@@ -15,6 +15,7 @@ const initialStore={
     humedad:"",
     viento:"",
     error:"",
+    units:"",
 }
 
 const masRepetido = ar => ar.reduce((acum, el) => {
@@ -24,6 +25,19 @@ const masRepetido = ar => ar.reduce((acum, el) => {
 
 const getDateTime=(string)=>{
     return string.split(" ",2)
+}
+
+const convertirFahrenheit=(array)=>{
+    return array.map(e=>Math.round(e*9/5+32))
+}
+const convertirCelsius=(array)=>{
+    return array.map(e=>Math.round(5/9*(e-32)))
+}
+const convertirMillas=(vel)=>{
+    return Math.round(vel/1.609*100)/100
+}
+const convertirKm=(vel)=>{
+    return Math.round(vel*1.609*100)/100
 }
 
 const rootReducer = (state=initialStore,action) => {
@@ -68,7 +82,8 @@ const rootReducer = (state=initialStore,action) => {
                 climaCodigo:climaCodigo,
                 presion:action.data.list[0].main.pressure,
                 humedad:action.data.list[0].main.humidity,
-                viento:action.data.list[0].wind.speed,
+                viento:Math.round(action.data.list[0].wind.speed*3.6*100)/100,
+                units:"celsius",
             } 
         case CARGANDO_DATA:
             return {
@@ -80,6 +95,26 @@ const rootReducer = (state=initialStore,action) => {
             return{
                 ...state,
                 error:action.error,
+            }
+        case CAMBIAR_UNIDADES:
+            let gradosMin=[]
+            let gradosMax=[]
+            let viento=0
+            if (action.units==="fahrenheit"){
+                gradosMin=convertirFahrenheit(state.tempMin)
+                gradosMax=convertirFahrenheit(state.tempMax)
+                viento=convertirMillas(state.viento)
+            }else{
+                gradosMin=convertirCelsius(state.tempMin)
+                gradosMax=convertirCelsius(state.tempMax)
+                viento=convertirKm(state.viento)
+            }
+            return{
+                ...state,
+                units:action.units,
+                tempMin:gradosMin,
+                tempMax:gradosMax,
+                viento:viento,
             }
         default:
             return state

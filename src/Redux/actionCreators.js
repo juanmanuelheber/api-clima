@@ -1,5 +1,5 @@
 
-import { CARGANDO_DATA, CARGAR_DATA, MOSTRAR_ERROR } from "./actions"
+import { CAMBIAR_UNIDADES, CARGANDO_DATA, CARGAR_DATA, MOSTRAR_ERROR } from "./actions"
 
 const fetchData=(data)=>({
     type:CARGAR_DATA,
@@ -15,4 +15,9 @@ const mostrarError=(error)=>({
     error
 })
 
-export {fetchData,cargandoData,mostrarError}
+const cambiarUnidades=(units)=>({
+    type:CAMBIAR_UNIDADES,
+    units
+})
+
+export {fetchData,cargandoData,mostrarError,cambiarUnidades}

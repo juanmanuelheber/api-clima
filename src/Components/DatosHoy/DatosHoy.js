@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from "react-bootstrap"
 import "./hoy.css"
 
-const DatosHoy = ({max,min,clima,icono,presion,humedad,viento}) => {
+const DatosHoy = ({max,min,clima,icono,presion,humedad,viento,units}) => {
     return (
         <div className="text-center text-light w-100 mh-50">
             <Row>
@@ -14,14 +14,14 @@ const DatosHoy = ({max,min,clima,icono,presion,humedad,viento}) => {
                 </Col>
                 <Col xs={6} md={4} className="centrado">
                     <div>
-                        <p className="h2">{max}°C</p>
-                        <p className="h5">{min}°C</p>
+                        <p className="h2">{max}{units==="celsius"?"°C":"°F"}</p>
+                        <p className="h5">{min}{units==="celsius"?"°C":"°F"}</p>
                     </div>
                 </Col>
                 <Col xs={12} md={4} className="centrado justify-content-end">
                     <div className="my-2 w-100">
-                        <p className="my-1 text-nowrap extra">Viento: {viento}km/h</p>
-                        <p className="my-1 text-nowrap extra">Presión: {presion}HP</p>
+                        <p className="my-1 text-nowrap extra">Viento: {viento}{units==="celsius"?"kmh":"mph"}</p>
+                        <p className="my-1 text-nowrap extra">Presión: {presion}hPa</p>
                         <p className="my-1 text-nowrap extra">Humedad: {humedad}%</p>
                     </div>
                 </Col>
