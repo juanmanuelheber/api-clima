@@ -1,18 +1,15 @@
 .clima-hoy {
   min-width: 75px;
 }
+.extra {
+  text-align: center;
+}
 
 @media (min-width: 768px) {
   .clima-hoy {
     min-width: 100px;
   }
-}
-
-@media (max-width: 575.98px) {
   .extra {
-    font-size: 0.8rem;
-  }
-  .h2 {
-    font-size: 1.8rem;
+    text-align: right;
   }
 }

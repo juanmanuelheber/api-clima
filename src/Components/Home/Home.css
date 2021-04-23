@@ -10,3 +10,13 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.pronostico{
+  height: 75%;
+}
+
+@media (min-width: 768px) {
+  .pronostico {
+    height: 60%;
+  }
+}

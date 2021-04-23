@@ -13,7 +13,7 @@ const Home = () => {
                     <Col xs={12} md={5} lg={6}>
                         <BuscarCiudad />
                     </Col>
-                    <Col xs={12} md={7} lg={6} className="h-50">
+                    <Col xs={12} md={7} lg={6} className="pronostico">
                         <Pronostico />
                     </Col>
                 </Row>
