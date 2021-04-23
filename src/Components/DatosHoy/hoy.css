@@ -7,3 +7,12 @@
     min-width: 100px;
   }
 }
+
+@media (max-width: 575.98px) {
+  .extra {
+    font-size: 0.8rem;
+  }
+  .h2 {
+    font-size: 1.8rem;
+  }
+}
