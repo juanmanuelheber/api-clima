@@ -1,0 +1,9 @@
+.clima-hoy {
+  min-width: 75px;
+}
+
+@media (min-width: 768px) {
+  .clima-hoy {
+    min-width: 100px;
+  }
+}

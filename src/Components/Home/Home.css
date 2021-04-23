@@ -1,0 +1,12 @@
+#container-home {
+  height: 100vh;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(23, 228, 223, 0.3) 100%
+    ),
+    url("https://images.pexels.com/photos/6407611/pexels-photo-6407611.jpeg?cs=srgb&dl=pexels-francesco-ungaro-6407611.jpg&fm=jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
