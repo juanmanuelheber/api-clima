@@ -3,7 +3,6 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 import { cargandoData, fetchData, mostrarError } from '../../Redux/actionCreators'
 import {connect} from "react-redux"
 import axios from "axios"
-import { URL } from "../../Redux/actions"
 
 const BuscarCiudad = ({cargandoDataLoader,cargarData,cargarError,data}) => {
     const [ciudad,setCiudad]=useState("Buenos Aires")
@@ -13,7 +12,7 @@ const BuscarCiudad = ({cargandoDataLoader,cargarData,cargarError,data}) => {
     }
 
     const getData=(ciudad="Buenos Aires")=>{
-        axios.get(`${URL}&q=${ciudad}`)
+        axios.get(`${process.env.REACT_APP_API_KEY}&q=${ciudad}`)
             .then(response=>{cargarData(response.data)})
             .catch(error=>cargarError(error.message))
     } 
